@@ -12,10 +12,6 @@ class RedisClient {
     this.#connection = redis.createClient(this.#port, this.#host);
   }
 
-  #connect() {
-    return this.#connection;
-  }
-
   get client() {
     return this.#connection;
   }

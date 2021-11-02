@@ -17,7 +17,7 @@ exports.find = async () => {
     return products;
   }
 
-  products = await client('products').select();
+  products = await client.table('products').select();
 
   return products;
 };
