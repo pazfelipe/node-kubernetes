@@ -3,15 +3,19 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "knex": "^0.95.12",
-    "mysql2": "^2.3.2"
+    "mysql2": "^2.3.2",
+    "redis": "^3.1.2"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "name": "applications",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

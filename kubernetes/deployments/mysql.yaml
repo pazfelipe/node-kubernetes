@@ -30,6 +30,14 @@ spec:
             - name: mysql-persistent-volume
               mountPath: /var/lib/msyql
 
+          resources:
+            limits:
+              memory: "64Mi"
+              cpu: "500m"
+            requests:
+              memory: "32Mi"
+              cpu: "100m"
+
       volumes:
         - name: mysql-persistent-volume
           persistentVolumeClaim:
