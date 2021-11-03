@@ -15,7 +15,8 @@ spec:
       labels:
         app: nginx
     spec:
-      # volumes:
+      volumes:
+        - name: nginx-logs
       #   - name: nginx-config
       #     configMap:
       #       name: nginx-config-map
@@ -32,6 +33,23 @@ spec:
             requests:
               memory: "32Mi"
               cpu: "100m"
-          # volumeMounts:
-          #   - name: nginx-config
-          #     mountPath: /etc/nginx/conf.d
+          volumeMounts:
+            - name: nginx-logs
+              mountPath: /usr/local/openresty/nginx/logs
+
+        - name: app-sidecar
+          image: ubuntu:xenial
+          command:
+            - sh
+            - -c
+            - while true; do cat /usr/local/openresty/nginx/logs/access.log; sleep 1; done
+          resources:
+            limits:
+              memory: "64Mi"
+              cpu: "500m"
+            requests:
+              memory: "32Mi"
+              cpu: "100m"
+          volumeMounts:
+            - name: nginx-logs
+              mountPath: /usr/local/openresty/nginx/logs
